@@ -52,3 +52,10 @@ dd if=/dev/zero of=10mFile bs=1024k count=10
 #dd Spiegelt Datei if=source welche gelsesen werden muss OF=path/filename bs=Grösse count=Grösse Files
 
 du -sh path
+#grösse von Verzeichnis
+
+find verzeichnis | cpio -p /wunschverzeichnis
+#man kopiert inhalt von verzeichnis inkl. Sym und Hardlinks
+
+Zeichen*(alle Wörter welche dies beinhalten).*(Platzhalter punkt-Stern)
+
