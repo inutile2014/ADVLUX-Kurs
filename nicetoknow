@@ -1,0 +1,54 @@
+time ps -fea
+#Zeigt die Zeit des Ausführung des Prozesses
+
+man 2 alarm
+#alarm = gibt die zeit aus wenn man auf ein Signal wartet
+
+ls -l ordner1/ > ordner2/testfile2.txt
+#erstellt ein File oder leitet den output weiter
+
+echo$?
+#gibt den output der letzten Meldung
+
+less
+#Zeigt inhalt von Datei
+
+ls -l ordner1/foo 2> ordner2/fehlerliste.txt
+#Erstellt ein Errorlog. Wichtig hier 2>
+
+
+grep foo << edf
+#Sucht bis edf(input) kommt. edf ist hier die sogennante "Marke"
+
+cat(concatenate)
+#gleiche Aufgabe wie more oder less
+
+grep 3 grepexample.txt
+#findet das Zeichen im beispiel oben die Zahl 3 in einem file(grepexample)
+
+awk
+#awk ist eine Skriptsprache zum Editieren und Analysieren von Texten
+
+sum filename
+#Gibt Bytes des Files aus
+
+echo "scale=300; 4*a(1)" | bc -l
+#mit dem befehl scale gibt es die stellen nach dem Komma aus. 4*a(1) berechnet pi
+der befehl bc ist ein calculator
+
+objekt | funkion-> pipe ist wichtig. Ansonsten wird sie nicht übergeben
+# Es kann ein Wert generiert werden und via pipe | an eine funktion übergeben werden.
+
+ls | wc -l
+#zählt inhalt in einem Verzeichnis
+
+ln -s /dir/file /dir2/file2
+#Verlinkt sie untereinander
+
+tar -cf -(zip das Verzeichnis) bedingung *(Stern alle files aus dem Verzeichnis) | (cd /ordner; tar -xf -)
+#verschieben inhalt von verzeichnis a zu verzeichnis b
+
+dd if=/dev/zero of=10mFile bs=1024k count=10
+#dd Spiegelt Datei if=source welche gelsesen werden muss OF=path/filename bs=Grösse count=Grösse Files
+
+du -sh path
