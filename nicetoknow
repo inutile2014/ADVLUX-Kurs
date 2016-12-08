@@ -26,6 +26,13 @@ cat(concatenate)
 grep 3 grepexample.txt
 #findet das Zeichen im beispiel oben die Zahl 3 in einem file(grepexample)
 
+egrep "(wort1 | wort2)" datei.txt
+#findet die gesuchen Worte in einer Textdatei.Er findet es auch wenn nur 1 Wort vorkommt
+
+grep -E '\<(.+{7,7})\>.*\1' datei.txt
+#Ein wort finden welche 7 Buchstaben hat
+
+
 awk
 #awk ist eine Skriptsprache zum Editieren und Analysieren von Texten
 
