@@ -90,7 +90,27 @@ End
                 print word, num[word]
 
 }
-End
+
+#awk wort in einem Logfile suchen
+#!/usr/bin/awk
+
+
+/Invalid user/i { bad++ }
+
+END{
+        print bad, " bad request"
+}
+
+#Die Logik wie ein User gesucht wird beim Login
+getent passwd username
+
+#id -> Listet Gruppen auf welche benutzer mitglied ist
+id
+
+#finger komplette informationen von User
+finger username
+
+
 
 
 
