@@ -1,3 +1,4 @@
+#nichetoknow
 time ps -fea
 #Zeigt die Zeit des Ausführung des Prozesses
 
@@ -15,26 +16,6 @@ less
 
 ls -l ordner1/foo 2> ordner2/fehlerliste.txt
 #Erstellt ein Errorlog. Wichtig hier 2>
-
-
-grep foo << edf
-#Sucht bis edf(input) kommt. edf ist hier die sogennante "Marke"
-
-cat(concatenate)
-#gleiche Aufgabe wie more oder less
-
-grep 3 grepexample.txt
-#findet das Zeichen im beispiel oben die Zahl 3 in einem file(grepexample)
-
-egrep "(wort1 | wort2)" datei.txt
-#findet die gesuchen Worte in einer Textdatei.Er findet es auch wenn nur 1 Wort vorkommt
-
-grep -E '\<(.+{7,7})\>.*\1' datei.txt
-#Ein wort finden welche 7 Buchstaben hat
-
-
-awk
-#awk ist eine Skriptsprache zum Editieren und Analysieren von Texten
 
 sum filename
 #Gibt Bytes des Files aus
@@ -65,4 +46,52 @@ find verzeichnis | cpio -p /wunschverzeichnis
 #man kopiert inhalt von verzeichnis inkl. Sym und Hardlinks
 
 Zeichen*(alle Wörter welche dies beinhalten).*(Platzhalter punkt-Stern)
+
+
+
+#GREP + sed
+grep foo << edf
+#Sucht bis edf(input) kommt. edf ist hier die sogennante "Marke"
+
+cat(concatenate)
+#gleiche Aufgabe wie more oder less
+
+grep 3 grepexample.txt
+#findet das Zeichen im beispiel oben die Zahl 3 in einem file(grepexample)
+
+egrep "(wort1 | wort2)" datei.txt
+#findet die gesuchen Worte in einer Textdatei.Er findet es auch wenn nur 1 Wort vorkommt
+
+grep -E '\<(.+{7,7})\>.*\1' datei.txt
+#Ein wort finden welche 7 Buchstaben hat
+
+grep '\(.\)\1.*\(.\)\2' datei.txt | wc -l
+# (.\) -> nimmt ein wort in den Speicher  1.* -> Beliebiges Zeichen  wc-l -> berechnet Inhalt welcher Match
+
+ifconfig | grep 'inet ' | sed -e 's/^ *inet //' -e 's/ .*//'
+# Anweisung | grep finde wort | sed-> zeigt Wort an aus einem File -e -> bei mehreren Anweisungen 's/ -> substution vor *wort  //-> schneidet alles weg
+
+
+
+#AWK
+awk
+#awk ist eine Skriptsprache zum Editieren und Analysieren von Texten
+
+#awk -> zählt alle wörter und gibt die Anzahl des wortes aus Befehl: awk -E namedesscriptes.awk datei.txt
+Beginn
+{
+        for(i=1;i<=NF;i++)
+                num[$i]++
+}
+End
+
+{
+        for(word in num)
+                print word, num[word]
+
+}
+End
+
+
+
 
