@@ -110,6 +110,28 @@ id
 #finger komplette informationen von User
 finger username
 
+#C
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
+
+
+void main()
+
+{
+        pid_t pid = 0;
+
+        printf("parent here\n");
+
+        pid = fork();
+        if(pid == 0){
+
+                printf("child here %d\n", pid);
+}
+        print("i'm here %d\n", pid);
+
+}
 
 
 
