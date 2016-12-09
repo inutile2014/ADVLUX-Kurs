@@ -110,28 +110,28 @@ id
 #finger komplette informationen von User
 finger username
 
-#C
+#C-> Prozess generieren
 
 #include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
 
 
-void main()
+void main() {
+   pid_t pid = 0;
 
-{
-        pid_t pid = 0;
+   printf("parent here\n");
 
-        printf("parent here\n");
-
-        pid = fork();
+   pid = fork();
         if(pid == 0){
 
-                printf("child here %d\n", pid);
+        printf("child here %d\n", pid);
+        sleep(30);
 }
-        print("i'm here %d\n", pid);
+   printf("i'm here %d\n", pid);
 
 }
+
 
 
 
