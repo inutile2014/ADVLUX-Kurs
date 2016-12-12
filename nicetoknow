@@ -170,6 +170,158 @@ Befehl: at [Zeitangabe] -[Enter]
 # auf die Zeile root gehen
 #benutzer einfügen
 
+# curl URL transfer
+curl www.example <comand>
 
+#file download von Seite wget
+wget http://nginx.org/download/nginx-1.9.15.tar.gz
+
+
+
+#Shell Script
+
+#Skripts vergleichen diff./
+diff script.sh script2.sh
+
+#variablelänge
+echo${#variable}
+
+#Comands ausführen
+#{Comands:}
+{
+date
+ps
+}
+
+#Funktionen
+function Myfunction (ls -l $* | grep name)
+
+#!/bin/bash
+
+echo 'Gibt deine Temp ein: '
+read temp #Variable definiert
+if (($temp < 20));
+        then
+         echo'Zu kalt'
+elif (($temp > 30));
+        then
+          echo 'Zu warm'
+else
+        echo 'tip top'
+fi
+
+
+#for Schlaufe
+for Myname in Mywortlist
+        do
+                comand
+        done
+#while
+while
+kommando-liste1
+do
+kommando-liste2
+done
+
+#case
+case wort
+in
+muster1) kommando-liste1 ;;
+...)
+...;;
+esac
+
+#select -> Wenn eine Menuauswahl erstellt werden muss
+select name in wortliste
+do
+kommando-liste
+done
+$ select i in list
+> do
+>
+case $i in
+>
+list)
+>
+copy)
+>
+del)
+>
+print)
+>
+quit)
+>
+esac
+> done
+1) list
+2) copy
+3) del
+4) print
+5) quit
+#? #eingabe von User
+
+#array
+array=(A zelle Böllä schellä)
+$ echo ${array[1]}
+zelle
+$ echo ${array[*]}
+A zelle Böllä schell
+
+#array erweitern
+array=(${array[@]} d\’Chatz gaht uf Walliselä)
+echo ${array[*]}
+zelle Böllä schellä d’Chatz gaht uf Walliselä
+
+#Eingabe von user weiter verwenden read -> Read wird mit crtl D abgebroche
+$ while read Variablename -r line
+> do
+>
+echo ”>> $Variablename”
+> done
+Eine Zeile
+>> Eine Zeil
+
+#bei Shell ist der test befehl gleich boolen
+test -d /tmp;echo $?
+test -f /tmp/foo;echo $?
+test ”$HOME” = /home/rat;echo $?
+ZAHL=5
+test ”$ZAHL” -eq 5;echo $?
+
+#Ausführbarkeit Testen
+#!/bin/bash
+
+echo -n 'Gib eine Dateiverzeichnis an: '
+read file
+
+echo -n 'Datei $file ist'
+test -f $file && echo 'vorhanden ' || echo -n 'nicht vorhanden'
+test -r $file && echo 'lesen ' || echo -n 'nicht lesbar'
+test -x $file && echo 'ausführbar ' || echo -n 'nicht ausführbar'
+echo
+
+
+#SET Ohne Argumente werden alle settings, Variablen und Funk onen der aktuellen Shell aufgelistet.
+$ set -o
+braceexpand
+noclobber
+ignoreeof
+...
+on
+off
+off
+
+#Mit set debuggen
+set -x
+#debuggin beenden
+set +x
+
+#shif – Positionelle Parameter verschieben.
+
+#trap
+#trap – Signalbehandlung in der Shell
+$ trap ’echo ”Wuff! Wuff!”’ 2
+$ Drückt <CTRL>C
+Wuff! Wuff!
 
 
