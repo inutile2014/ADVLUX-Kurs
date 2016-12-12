@@ -325,3 +325,30 @@ $ Drückt <CTRL>C
 Wuff! Wuff!
 
 
+#Monitoring
+#filemonitoring Script
+#!/bin/bash
+
+
+# Variablen
+HW=20 #Schwellwert
+HOST=$(hostname)
+
+# Funktionen
+function warnung {
+        echo "$Host: Partition: $1 / Mounted on: $3 / Belegt: $2"
+}
+################################### MAIN ##################################
+df -h | while read df ; do
+        case $df in
+                /dev/*) set $df
+                        proz=${5%\%}
+                        if (( $proz > $HW )) ; then
+                                warnung $1 $5 $6
+                        fi
+                        ;; #abschluss des Blockes
+                     *) ;;
+        esac
+done
+
+
