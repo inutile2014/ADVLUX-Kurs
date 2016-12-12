@@ -133,6 +133,30 @@ void main() {
 }
 
 
+#Nice -> Priorität geben für ein Prozess
+#Negative Nicezahlen haben eine hohe priorität. Positive Nicezahlen haben eine tiefe Priorität
+Startet Prozess mit Tiefer Prio: nice  ps -l
+Verändern von Einem Prozess:  renice [Priorität welceh man geben möchte] ProzessNR
+
+#Service Suchen ob er gestartet ist
+journalctl -t ServiceName
+
+#cronjob
+* * * * *
+min H MtD Mt D
+#Beispiel Verzeichnis 1 mal am Tah grösse Prüfen
+#Erstellen des Jobs: 
+crontab -e (Alle werden in die gleiche Liste )
+0 0-23 * * * df -h /home/kurs3
+#/etc/globalecrontab
+#Können alles crontabs editiert werden
+
+
+#at
+#ist eine Verarbeitung welche Sporadisch funktioniert. Könnte als reminder benutzt werden
+Befehl: at [Zeitangabe] -[Enter]
+#Gewünschter Text eingeben
+#control D um zu beenden
 
 
 
