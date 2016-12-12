@@ -156,7 +156,19 @@ crontab -e (Alle werden in die gleiche Liste )
 #ist eine Verarbeitung welche Sporadisch funktioniert. Könnte als reminder benutzt werden
 Befehl: at [Zeitangabe] -[Enter]
 #Gewünschter Text eingeben
-#control D um zu beenden
+#ctrl D um zu beenden
+
+#Packet zusammenstellen
+#Paket via wget downloaden
+# entpaken tar xf packet
+# ./configure #alle Module die man möchte(./configure --with_Modulexyz)
+#Compilieren -> make j(anzahl cores)
+#installieren -> make install
+
+#in sudo gruppe hinzufügen
+#visudo eingeben
+# auf die Zeile root gehen
+#benutzer einfügen
 
 
 
