@@ -337,6 +337,7 @@ HOST=$(hostname)
 # Funktionen
 function warnung {
         echo "$Host: Partition: $1 / Mounted on: $3 / Belegt: $2"
+        mail -s “Filemonitoring” mail@mail.com
 }
 ################################### MAIN ##################################
 df -h | while read df ; do
