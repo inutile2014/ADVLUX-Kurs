@@ -47,7 +47,15 @@ find verzeichnis | cpio -p /wunschverzeichnis
 
 Zeichen*(alle Wörter welche dies beinhalten).*(Platzhalter punkt-Stern)
 
+Filesystem history
+find /log/ -type f -mtime -4 -print0 | xargs -0 ls -lt
+Sat file
+du -ks * | sort -n
 
+
+Load avrg
+Sar = systemstatus Mit -q wird load avrg angezeigt
+sar -q -s 01:20:03  -e 01:59:00
 
 #GREP + sed
 grep foo << edf
