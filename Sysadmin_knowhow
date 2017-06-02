@@ -1,0 +1,26 @@
+#Check Loadavrg
+sar -q -s 18:20:00 -e 19:50:00 -f /var/log/sa/sa20
+
+#Iowait
+sar 1 3 -s 18:20:00 -e 18:59:00 -f /var/log/sa/sa25
+
+
+#Akw + Anzahlt + Ordnen
+more /var/log/nginx/access.log more |  grep -i 'prism.' |awk '{print $1}' | sort | uniq -c
+
+#Lsof: The lsof command will show you all of the files open by a specific process or all processes depending on the options provided. 
+lsof -p 16528 #Bytes
+
+##Cert Administration##
+
+#Importieren a Key
+gpg --import LUKS_public_PGP_Key_ID_02AB9BF0.asc
+
+#List  public Keys
+ gpg --list-keys
+
+#List all Secret Keys
+gpg --list-secret-keys
+
+#Delete key(Last number are the keyname)
+gpg --delete-keys 25C85DE8
