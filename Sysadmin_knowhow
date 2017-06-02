@@ -24,3 +24,20 @@ gpg --list-secret-keys
 
 #Delete key(Last number are the keyname)
 gpg --delete-keys 25C85DE8
+
+##search a particular word in a file and print the result in a Logfile 
+
+filename=$(ls -r /var/log/nginx/access.log*gz | head -1)
+
+
+function com  {
+
+ zcat  $filename | grep -i "chrom" | wc -l  $resultchrom
+        echo "----Chrom----"
+}
+
+### Main ###
+com
+ $resultchrom
+echo "The file that was be checked is: " $filename
+echo "Log date: "=$(date +"%d-%m-%y")
