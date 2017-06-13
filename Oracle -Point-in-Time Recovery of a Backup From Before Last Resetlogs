@@ -1,0 +1,57 @@
+#der vor dem letzten 'Resetlogs' liegt
+OS> PCASP
+OS> assys
+SQL> startup nomount
+
+OS> rman
+
+rman> connect rcvcat rman_cat_11g/rc11g@PNRMAN.TAURI.CH
+
+RMAN> list incarnation;
+
+List of Database Incarnations
+DB Key  Inc Key DB Name  DB ID            STATUS  Reset SCN  Reset Time
+------- ------- -------- ---------------- --- ---------- ----------
+...
+5919154348 5919154475 PCASP    2933817566       PARENT  524040     22-SEP-10
+5919154348 5919154349 PCASP    2933817566       PARENT  1410445253 11-AUG-16
+5919154348 5966301888 PCASP    2933817566       CURRENT 1492265684 10-JUN-17
+...
+
+RMAN> set dbid 2933817566;
+
+RMAN> connect target
+
+RMAN> reset database to incarnation 5919154349;
+
+RMAN> list incarnation;
+
+List of Database Incarnations
+DB Key  Inc Key DB Name  DB ID            STATUS  Reset SCN  Reset Time
+------- ------- -------- ---------------- --- ---------- ----------
+...
+5919154348 5919154475 PCASP    2933817566       PARENT  524040     22-SEP-10
+5919154348 5919154349 PCASP    2933817566       CURRENT 1410445253 11-AUG-16
+5919154348 5966301888 PCASP    2933817566       ORPHAN  1492265684 10-JUN-17
+...
+
+SQL> quit 
+OS> obk
+
+OS> vi PCASP_restore_until_<DATE>.rman
+
+run {
+        SET UNTIL TIME "to_date('09.06.2017 14:00:00','dd.mm.yyyy hh24:mi:ss')";
+        allocate channel t1 type 'SBT_TAPE' parms
+        'ENV=(NB_ORA_POLICY=LNX_ORA_IND_04_O03,NB_ORA_CLIENT=sp1429z-b,NB_ORA_SERV=sssnbu05.itbackup.ch,BLKSIZE=262144,MAXOPENFILES=1)';
+        set command id to '1:2RecoveryUntilPCASP';
+        shutdown abort;
+        startup nomount;
+        restore controlfile;
+        alter database mount;
+        restore database;
+        recover database;
+        alter database open resetlogs;
+    }
+
+RMAN>@<PATH>/PCASP_restore_until_<DATE>.rman
