@@ -41,3 +41,21 @@ com
  $resultchrom
 echo "The file that was be checked is: " $filename
 echo "Log date: "=$(date +"%d-%m-%y")
+
+########Erstelle ein Zipfile und sende es via Mail
+#!/bin/bash
+
+#change to the desired folder
+cd /ordner/ordner1
+
+NFILE=`ls -r *.fileending |head -1`
+zip ${NFILE}.zip -P 'Password' ${NFILE}
+
+echo "I will send your pw by sms" |mail -s "Subject" -a ${NFILE}.zip -r email@email.com  
+
+#and transfer to a Server - logfolder
+scp ${NFILE} Server:/logfolder
+#rm file after sending
+rm ${NFILE}.zip
+
+
