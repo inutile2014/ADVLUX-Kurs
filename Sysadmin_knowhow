@@ -14,7 +14,7 @@ lsof -p 16528 #Bytes
 ##Cert Administration##
 
 #Importieren a Key
-gpg --import LUKS_public_PGP_Key_ID_02AB9BF0.asc
+gpg --import nameofkey_public_PGP_Key_ID_02AB9BF0.asc
 
 #List  public Keys
  gpg --list-keys
@@ -23,7 +23,21 @@ gpg --import LUKS_public_PGP_Key_ID_02AB9BF0.asc
 gpg --list-secret-keys
 
 #Delete key(Last number are the keyname)
-gpg --delete-keys 25C85DE8
+gpg --delete-keys 25C8885DE8
+
+#Check Modi/change time of a file
+find /var/log/ -cmin -60000 -> change
+find /var/log/ -mmin -60000 -> modification time
+find /var/log/ -amin -60000 -> access time -> -ctime in Stunden
+
+
+#Check Free Space on a Server
+vgs
+
+#Add Volume 
+lvextend -r -L4G /dev/mapper/vrhvg-varloglv(logic Volume)
+
+
 
 ##search a particular word in a file and print the result in a Logfile 
 
@@ -57,5 +71,7 @@ echo "I will send your pw by sms" |mail -s "Subject" -a ${NFILE}.zip -r email@em
 scp ${NFILE} Server:/logfolder
 #rm file after sending
 rm ${NFILE}.zip
+
+
 
 
