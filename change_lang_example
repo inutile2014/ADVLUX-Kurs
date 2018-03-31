@@ -1,0 +1,25 @@
+#!/bin/bash
+
+echo "Please choose keyboard layout [us, de, ch, fr, cn, ..]"
+
+echo -n "Enter your language [ENTER]: "
+read language
+
+if [ -f /usr/share/X11/xkb/symbols/$language ];
+then
+   echo "The language $language exists in /usr/share/X11/xkb/symbols"
+   setxkbmap -layout $language
+   echo "setxkbmap -layout $language"
+   echo "sleep 3" > /home/hacker/.scripts/login-script.sh
+   echo "/usr/bin/setxkbmap -layout $language" >> /home/hacker/.scripts/login-script.sh
+   echo XKBLAYOUT=\""$language"\" > /home/USER/.scripts/xkb.txt
+   sudo /home/USER/.scripts/change-keyboard-root.sh
+   echo "keyboard layout changed!"
+   sleep 3
+else
+   echo "The language $language does not exist in /usr/share/X11/xkb/symbols"
+   echo "Please install the missing language package or use another language"
+   sleep 3
+fi
+
+exit 0
